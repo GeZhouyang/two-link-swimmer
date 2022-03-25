@@ -25,15 +25,16 @@ print(datetime.now())
 
 #### model parameters
 
-alpha = 0.5   # learning rate [0,1]
+alpha = 0.8   # learning rate [0,1]
 gamma = 0.8   # belief in future [0,1)
 epsln = 0.1   # exploration factor [0,1)
 
 print('Learning rate %.1f,  belief in future %.1f,  tendency to explore %.1f'
       %(alpha,gamma,epsln))
 
-N_max = 200
-s_tr = list(range(N_max))  # training steps
+N_max = 200 # total steps
+N_trn = 50  # training steps
+s_tr = list(range(N_max))
 
 ## Index mapping from state and action to reward and Q:
 ## --------------------------
@@ -116,7 +117,7 @@ if __name__ == '__main__':
     disp_l = [disp]
     qv1 = [0.]  ###check qv1
     
-    #snapshot(0,pos1,s_l,s_r)  # save a snapshot of the configuration
+    snapshot(0,pos1,s_l,s_r)  # save a snapshot of the configuration
     
     ## Q-learning
     for istep in s_tr:
@@ -125,7 +126,11 @@ if __name__ == '__main__':
         i0 = 2*(ind_s-1)
         i1 = i0+2
         qq = qval[i0:i1]
-        rr = rwd[ i0:i1]  # the possible rewards 
+        rr = rwd[ i0:i1]  # the possible rewards
+
+        ## stop exploring after training
+        if istep > N_trn:
+            epsln = 0.
 
         ## Take an action (stochastic policy)
         num = random.uniform(0,1)
@@ -154,7 +159,7 @@ if __name__ == '__main__':
         disp += rwd[i_r]  # the net displacement
         disp_l.append(disp)
         pos1 += dx1[i_r]  # displacement of the center particle
-        #snapshot(istep+1,pos1,s_l,s_r)  # save a snapshot of the configuration
+        snapshot(istep+1,pos1,s_l,s_r)  # save a snapshot of the configuration
         
         ## Receive an immediate payoff
         payoff = rwd[i_r]

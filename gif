@@ -1,0 +1,16 @@
+#!/bin/bash
+
+## Generate gif from png
+
+echo "What's the common name of the png pics?"
+read cname
+
+echo "Converting ..."
+convert -antialias -layers OptimizePlus -delay 4 $cname*.png -loop 0 $cname.gif
+
+echo $cname".gif is created in the same directory."
+echo
+
+## Note:
+## The number after -delay is some kind of framerate.
+## The number after -loop means loop indefinitely.
