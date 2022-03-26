@@ -17,5 +17,5 @@ There are mainly three model parameters to modify and play around; see `main.py`
 ### References:
 
 > 1. Watkins, C. J. C. H. (1989). Learning from delayed rewards.
-> 2. Watkins, C. J., & Dayan, P. (1992). Q-learning. Machine learning, 8(3), 279-292.
-> 3. Najafi, A., & Golestanian, R. (2004). Simple swimmer at low Reynolds number: Three linked spheres. Physical Review E, 69(6), 062901.
+> 2. Watkins, C. J., & Dayan, P. (1992). Q-learning. *Machine learning*, 8(3), 279-292.
+> 3. Najafi, A., & Golestanian, R. (2004). Simple swimmer at low Reynolds number: Three linked spheres. *Physical Review E*, 69(6), 062901.
