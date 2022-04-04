@@ -100,7 +100,7 @@ def snapshot(istep,x1,s_l,s_r):
 
     ax.set_aspect('equal')
     
-    plt.savefig('pics/snap'+('%05i'%istep)+'.png', bbox_inches='tight')
+    plt.savefig('results/pics/snap'+('%05i'%istep)+'.png', bbox_inches='tight')
     plt.close()
 
     return
@@ -201,7 +201,7 @@ if __name__ == '__main__':
     ax.set_xlabel(r'$n$')
     ax.set_ylabel(r'$\Delta/R$')
     
-    plt.savefig('curve_disp.pdf', bbox_inches='tight')
+    plt.savefig('results/curve_disp.pdf', bbox_inches='tight')
     plt.close()
 
     ## plot in figures
@@ -221,7 +221,7 @@ if __name__ == '__main__':
     ax.set_xlabel(r'Action')
     ax.set_ylabel(r'State')
     
-    plt.savefig('table_Q.pdf', bbox_inches='tight')
+    plt.savefig('results/table_Q.pdf', bbox_inches='tight')
     plt.close()
 
 
@@ -237,5 +237,5 @@ if __name__ == '__main__':
     ax.set_xlabel(r'$n$')
     ax.set_ylabel(r'$Q_1$')
     
-    plt.savefig('curve_q1.pdf', bbox_inches='tight')
+    plt.savefig('results/curve_q1.pdf', bbox_inches='tight')
     plt.close()
