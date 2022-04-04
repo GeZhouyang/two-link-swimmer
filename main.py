@@ -1,12 +1,11 @@
 """ A little code that uses Q-learning, a form of reinforcement learning,
     to teach a simple two-link microrobot to swim in viscous fluids. 
 
-    See the following references for more physical details:
-    [1] Alan Tsang et al. Phys. Rev. Fluids (2020),
-    [2] Nijafi and Golestanian, Phys. Rev. E (2004).
+    Guest lecture for PHYS 350 Applications of classical mechancs.
+    Main instructor: Prof. Mona Berciu, UBC (winter 2022)
 
     Author: Anthony Ge
-    Date: Jan 12, 2022
+    Date: Apr 4, 2022
 """
 
 
@@ -26,10 +25,10 @@ print(datetime.now())
 #### model parameters
 
 alpha = 0.8   # learning rate [0,1]
-gamma = 0.8   # belief in future [0,1)
-epsln = 0.1   # exploration factor [0,1)
+gamma = 0.8   # discount factor [0,1)
+epsln = 0.4   # exploration factor [0,1)
 
-print('Learning rate %.1f,  belief in future %.1f,  tendency to explore %.1f'
+print('Learning rate %.1f,  discount factor %.1f,  tendency to explore %.1f'
       %(alpha,gamma,epsln))
 
 N_max = 200 # total steps
@@ -113,6 +112,9 @@ if __name__ == '__main__':
     s_l, s_r  = 0, 0    # initial state, left and right
     ind_s = state_index(s_l,s_r)
     qval = np.zeros(8)  # the Q-values array
+    ### iniitialize a terribly biased Q
+    #for i in [0,3,5,6]:
+    #    qval[i] = -1.
     disp = 0.           # net displacement of the swimmer
     disp_l = [disp]
     qv1 = [0.]  ###check qv1
